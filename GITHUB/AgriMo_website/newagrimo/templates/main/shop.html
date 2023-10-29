@@ -1,0 +1,138 @@
+{% load static %}
+
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'css/mg-d.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div class="navbar">
+		<ul class="navbar-l">
+			<li class="navbar-i">AGRIMO
+			</li>
+			<li class="navbar-i" style="float: right; height: 30.4px; width: 30.4px; justify-content: center;"><button style="height: 30.4px; width: 30.4px; border: solid white; border-radius: 5px; background-color: #303404;" onclick ="show()"></button>
+			</li>
+			<li class="navbar-i" style="float: right;">Помощь
+			</li>
+			<li class="navbar-i" style="float: right;">Профиль
+			</li>
+		</ul>
+	</div>
+	<div id="content">
+		<div class="wrap">
+			<div class="search">
+      			<input type="text" class="searchTerm" placeholder="  Что ищите?">
+      			<button type="submit" class="searchButton">
+        		<i class="fa fa-search"></i>
+     		</button>
+   			</div>
+   		</div>
+   		<button class="shopcart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></button>
+   		<h1>Метеостанции</h1>
+   		<div class="product">
+   			<div class="fill">
+    			<img src="https://sokolmeteo.ru/f/product/big_sokol_big_012_10.jpg" width="100%" height="100%" alt="" />
+				</div>
+   			<div class="minifoot">
+   				<div class="descc">
+   					<p class="foottit"><b>Метеостанция</b></p>
+   					<p class="price">25990 Т</p>
+   				</div>
+   				<div class="button-buy">
+   					<button class="button-buys">
+   						Купить Сейчас
+   					</button>
+   				</div>
+   			</div>
+   		</div>
+      <div class="product">
+        <div class="fill">
+          <img src="https://sokolmeteo.ru/f/product/big_sokol_big_012_10.jpg" width="100%" height="100%" alt="" />
+        </div>
+        <div class="minifoot">
+          <div class="descc">
+            <p class="foottit"><b>Метеостанция</b></p>
+            <p class="price">25990 Т</p>
+          </div>
+          <div class="button-buy">
+            <button class="button-buys">
+              Купить Сейчас
+            </button>
+          </div>
+        </div>
+      </div>
+        {% for good in goods %}
+      <div class="product">
+        <div class="fill">
+          <img src="{{good.image.url}}" width="100%" height="100%" alt="" />
+        </div>
+        <div class="minifoot">
+          <div class="descc">
+            <p class="foottit"><b>{{good.title}}</b></p>
+            <p class="price">{{good.price}} Т</p>
+          </div>
+          <div class="button-buy">
+            <button class="button-buys">
+              Купить Сейчас
+            </button>
+          </div>
+        </div>
+      </div>
+        {% endfor %}
+    </div>
+   	<div id="sidebar">
+  	<div class="table-container">
+    	<table>
+      <tr>
+        <td><i class="fa fa-home icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="{% url 'index' %}">Главная</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-user icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="#">Личный кабинет</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-area-chart icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="{% url 'graphs' param='week' %}">Мониторинг урожая</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-area-chart icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="{% url 'graphspredict' param='week' %}">Прогнозы ИИ</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-map-marker icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="{% url 'geolocation' %}">Геолокация</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-briefcase icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="{% url 'specialists' %}">Список вакансий</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-calendar icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="#">Мероприятия</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-shopping-cart icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="{% url 'shop' %}">Магазин</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-book icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="{% url 'education' %}">Образовка</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-cog icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="#">Настройки</a></td>
+      </tr>
+    	</table>
+  	</div>
+	</div>
+    <script>
+      function show() {
+        document.getElementById('sidebar').classList.toggle('active');
+        document.getElementById('content').classList.toggle('shrink');
+      }
+    </script>
+</body>
+</html>

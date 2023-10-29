@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="columnchart_values" style="width: 1800px; height: 300px;"></div>
+  <table class="content-table1">
+    <thead>
+    <tr class="tit">
+        <th>Disease</th>
+        <th>Description</th>
+        <th>Image</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% if ss1 %}
+    <tr>
+        <td>Tomato_Spider_Mites</td>
+        <td>{{ ss1 }}</td>
+        <td>Image</td>
+    </tr>
+    {% endif %}
+    {% if ss2 %}
+    <tr>
+        <td>Tomato_Leaf_Mold</td>
+        <td>{{ ss2 }}</td>
+        <td>Image</td>
+    </tr>
+    {% endif %}
+    {% if ss3 %}
+    <tr>
+        <td>Tomato_Blight</td>
+        <td>{{ ss3 }}</td>
+        <td>Image</td>
+    </tr>
+    {% endif %}
+    {% if ss4 %}
+    <tr>
+        <td>Strawberry_Powdery_Mildew_Leaf</td>
+        <td>{{ ss4 }}</td>
+        <td>Image</td>
+    </tr>
+    {% endif %}
+    {% if ss5 %}
+    <tr>
+        <td>Beans_Angular_LeafSpot</td>
+        <td>{{ ss5 }}</td>
+        <td>Image</td>
+    </tr>
+    {% endif %}
+    {% if ss6 %}
+    <tr>
+        <td>Beans_Rust</td>
+        <td>{{ ss6 }}</td>
+        <td>Image</td>
+    </tr>
+    {% endif %}
+    {% if ss7 %}
+    <tr>
+        <td>Strawberry_Angular_LeafSpot</td>
+        <td>{{ ss7 }}</td>
+        <td>Image</td>
+    </tr>
+    {% endif %}
+    {% if ss8 %}
+    <tr>
+        <td>Strawberry_Anthracnose_Fruit_Rot</td>
+        <td>{{ ss8 }}</td>
+        <td>Image</td>
+    </tr>
+    {% endif %}
+    {% if ss9 %}
+    <tr>
+        <td>Strawberry_Blossom_Blight</td>
+        <td>{{ ss9 }}</td>
+        <td>Image</td>
+    </tr>
+    {% endif %}
+    {% if ss10 %}
+    <tr>
+        <td>Strawberry_Gray_Mold</td>
+        <td>{{ ss10 }}</td>
+        <td>Image</td>
+    </tr>
+    {% endif %}
+    {% if ss11 %}
+    <tr>
+        <td>Strawberry_Leaf_Spot</td>
+        <td>{{ ss11 }}</td>
+        <td>Image</td>
+    </tr>
+    {% endif %}
+    {% if ss12 %}
+    <tr>
+        <td>Strawberry_Powdery_Mildew_Fruit</td>
+        <td>{{ ss12 }}</td>
+        <td>Image</td>
+    </tr>
+    {% endif %}
+    </tbody>
+  </table>
+</div>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load("current", {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ['Disease', 'Visitations', { role: 'style' } ],
+        ['Tomato_Spider_Mites', {{ s1 }}, 'stroke-color: #703593; stroke-width: 4; fill-color: #C5A5CF'],
+        ['Tomato_Leaf_Mold', {{ s2 }}, 'stroke-color: #703593; stroke-width: 4; fill-color: #C5A5CF'],
+        ['Tomato_Blight', {{ s3 }}, 'stroke-color: #703593; stroke-width: 4; fill-color: #C5A5CF'],
+        ['Strawberry_Powdery_Mildew_Leaf', {{ s4 }}, 'stroke-color: #703593; stroke-width: 4; fill-color: #C5A5CF'],
+        ['Beans_Angular_LeafSpot', {{ s5 }}, 'stroke-color: #703593; stroke-width: 4; fill-color: #C5A5CF'],
+        ['Beans_Rust', {{ s6 }}, 'stroke-color: #703593; stroke-width: 4; fill-color: #C5A5CF'],
+        ['Strawberry_Angular_LeafSpot', {{ s7 }}, 'stroke-color: #703593; stroke-width: 4; fill-color: #C5A5CF'],
+        ['Strawberry_Anthracnose_Fruit_Rot', {{ s8 }}, 'stroke-color: #703593; stroke-width: 4; fill-color: #C5A5CF'],
+        ['Strawberry_Blossom_Blight', {{ s9 }}, 'stroke-color: #703593; stroke-width: 4; fill-color: #C5A5CF'],
+        ['Strawberry_Gray_Mold', {{ s10 }}, 'stroke-color: #703593; stroke-width: 4; fill-color: #C5A5CF'],
+        ['Strawberry_Leaf_Spot', {{ s11 }}, 'stroke-color: #703593; stroke-width: 4; fill-color: #C5A5CF'],
+        ['Strawberry_Powdery_Mildew_Fruit', {{ s12 }}, 'stroke-color: #871B47; stroke-width: 4; fill-color: #BC5679; fill-opacity: 1']
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "Rate of disease in %",
+        titleTextStyle: { color: 'white' },
+        width: 1800,
+        height: 800,
+        bar: {groupWidth: "60%"},
+        legend: { position: "none" },
+        colors: ['white'],
+        backgroundColor: { fill:'transparent' },
+        hAxis: {
+          textStyle: { color: 'white' },
+          gridlines: {
+            color: 'gray',
+            opacity: 0.5
+          },
+          baselineColor: 'white',
+        },
+        vAxis: {
+          maxValue: 100,
+          textStyle: { color: 'white' },
+          gridlines: {
+            color: 'gray',
+            opacity: 0.7,
+          },
+        },
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+      chart.draw(view, options);
+  }
+  </script>
+</body>
+</html>

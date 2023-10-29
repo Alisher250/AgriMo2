@@ -1,0 +1,59 @@
+{% load static %}
+
+<html>
+<head>
+	<link rel="stylesheet" href="{% static 'css/log-s.css' %}">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body style="background-image: url('{% static 'images/bg.png' %}'); background-size: cover; position: relative;">
+	<header>
+		AGRIMO
+	</header>
+	<div class="main">
+		<div class="content">
+			<h1 class="reg-t">Авторизация</h1>
+			<form action="{% url 'loginsystem' %}" method="POST">
+				{% csrf_token %}
+				<div class="form" id="email">
+ 					<input type="text" name="username" autocomplete="off" required />
+  					<label for="text" class="label-name">
+    				<span class="content-name">
+      					Электронная почта
+    				</span>
+  					</label>
+				</div>
+				<br>
+				<div class="form" id="password">
+ 					<input id="hid" type="password" name="password" autocomplete="off" required />
+  					<label for="text" class="label-name">
+    				<span class="content-name">
+      					Пароль
+    				</span>
+  					</label>
+  					<button class="show" type="button" onclick="myFunction()"><i class="fa fa-eye" aria-hidden="true"></i></button>
+				</div>
+				<p>Нет аккаунта? <a href="{% url 'signupsystem' %}">Создайте</a></p><br>
+				<p>Забыли пароль? <a href="#">Восстановить</a></p>
+				<button class="button" type="submit">
+  					<p class="button-text">Продолжить</p>
+  					<img class="button-icon" src="https://cdn-icons-png.flaticon.com/512/109/109617.png">
+				</button>
+			</form>	
+			
+		</div>
+	</div>
+	<script>
+		function myFunction() {
+  			var x = document.getElementById("hid");
+  			if (x.type === "password") {
+    			x.type = "text";
+  			} else {
+    			x.type = "password";
+  			}
+		}
+</script>
+</body>
+</html>

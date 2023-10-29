@@ -1,0 +1,179 @@
+{% load static %}
+
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'css/home-d1.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.maptiler.com/maptiler-sdk-js/v1.1.1/maptiler-sdk.umd.js"></script>
+    <link href="https://cdn.maptiler.com/maptiler-sdk-js/v1.1.1/maptiler-sdk.css" rel="stylesheet" />
+    <script src="https://cdn.maptiler.com/leaflet-maptilersdk/v1.0.0/leaflet-maptilersdk.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    #map {
+      position: absolute;
+      top: 200px;
+      right: 0;
+      bottom: 200px;
+      left: 0;
+      height: 50vh;
+    }
+  </style>
+</head>
+<body>
+	<div class="navbar">
+			<ul class="navbar-l">
+				<li class="navbar-i">AGRIMO
+				</li>
+				<li class="navbar-i" id="but"><button onclick ="show()"></button>
+				</li>
+				<li class="navbar-i" style="float: right;">Помощь
+				</li>
+				<li class="navbar-i" style="float: right;">Профиль
+				</li>
+			</ul>
+		</div>
+	<div class="wrapper">
+        <form method="POST" action="{% url 'geolocation' %}">
+            {% csrf_token %}
+            <input type="text" name="lat"> Latitude
+            <br>
+            <input type="text" name="long"> Longitude
+            <br>
+            <button type="submit">Сохранить</button>
+        </form>
+        <h1>Локация вашей метеостанции</h1>
+        <div id="map"></div>
+        <form method="POST" action="{% url 'add_shape' %}">
+        {% csrf_token %}
+        <input type="hidden" name="drawn_shapes[]" id="drawn-shapes-input">
+        <button type="submit">Сохранить Черчения</button>
+</form>
+	</div>
+
+<div id="sidebar">
+  <div class="table-container">
+    <table>
+      <tr>
+        <td><i class="fa fa-home icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="{% url 'index' %}">Главная</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-user icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="#">Личный кабинет</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-area-chart icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="{% url 'graphs' param='week' %}">Мониторинг урожая</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-area-chart icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="{% url 'graphspredict' param='week' %}">Прогнозы ИИ</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-map-marker icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="{% url 'geolocation' %}">Геолокация</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-briefcase icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="{% url 'specialists' %}">Список вакансий</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-calendar icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="#">Мероприятия</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-shopping-cart icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="{% url 'shop' %}">Магазин</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-book icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="{% url 'education' %}">Образовка</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-cog icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="#">Настройки</a></td>
+      </tr>
+    	</table>
+  </div>
+</div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUw2Y59tuLTbBjptXWD0cQTgmZ8JLqoXw"></script>
+	<script>
+        function show() {
+        document.getElementById('sidebar').classList.toggle('active');
+        }
+
+        const key = 'iCRDXEEMTLDhCmkDfPu5';
+
+        {% if not lat %}
+        const map = L.map('map').setView([43.2220, 76.8512], 8);
+        const mtLayer = L.maptilerLayer({
+        apiKey: key,
+        style: L.MaptilerStyle.STREETS,
+        }).addTo(map);
+        {% else %}
+        const map = L.map('map').setView([{{lat}}, {{long}}], 8);
+        const mtLayer = L.maptilerLayer({
+        apiKey: key,
+        style: L.MaptilerStyle.STREETS,
+        }).addTo(map);
+        var marker = L.marker([{{lat}}, {{long}}]).addTo(map);
+        {% endif %}
+
+        const drawnItems = new L.FeatureGroup().addTo(map);
+        map.addControl(new L.Control.Draw({
+        edit: {
+          featureGroup: drawnItems,
+        },
+        draw: {
+          polygon: true,
+          polyline: false,
+          rectangle: true,
+          circle: false,
+          marker: false,
+        },
+        }));
+
+
+        map.on(L.Draw.Event.CREATED, function (event) {
+            const layer = event.layer;
+            drawnItems.addLayer(layer);
+            // Get the drawn shapes as GeoJSON and update the hidden input field
+            const drawnShapes = drawnItems.toGeoJSON();
+            document.getElementById('drawn-shapes-input').value = JSON.stringify(drawnShapes);
+        });
+
+        const drawnShapes = [
+          {% for shape in drawn_shapes %}
+            {{ shape|safe }},
+          {% endfor %}
+        ];
+
+        drawnShapes.forEach(function(shape) {
+            const geojsonLayer = L.geoJSON(shape).addTo(map);
+
+            const hideButton = document.createElement('button');
+            hideButton.innerHTML = 'Hide';
+            hideButton.addEventListener('click', function() {
+                map.removeLayer(geojsonLayer);
+
+                const index = drawnShapes.indexOf(shape);
+                if (index > -1) {
+                    drawnShapes.splice(index, 1);
+                }
+                document.getElementById('drawn-shapes-input').value = JSON.stringify(drawnShapes);
+            });
+
+            geojsonLayer.bindPopup(hideButton);
+        });
+
+
+    </script>
+</body>
+</html>
+

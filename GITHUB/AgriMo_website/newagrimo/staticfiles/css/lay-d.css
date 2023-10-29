@@ -1,0 +1,110 @@
+#sidebar.active {
+  right: 0;
+  overflow: auto;
+}
+
+#sidebar {
+  position: fixed;
+  width: 300px;
+  height: 100%;
+  background: #fffcf4;
+  right: -310px;
+  transition: .4s;
+  overflow: hidden;
+  z-index: 4;
+  top: 80px;
+}
+
+.table-container {
+  width: 100%;
+}
+
+.table-container table {
+  border-collapse: collapse;
+  width: 100%;
+  height: 650px;
+}
+
+.table-container td {
+  padding: 10px;
+  text-align: center;
+}
+
+.table-container .icon {
+  font-size: 22px;
+  margin-left: 40px;
+}
+
+.table-container .text {
+  font-family: 'Inter', sans-serif;
+  text-align: left;
+  font-size: 22px;
+}
+.table-container .text a {
+  text-decoration: none;
+  color: black;
+}
+
+body {
+  margin: 0px;
+}
+
+.navbar {
+  z-index: 1;
+  overflow: hidden;
+}
+
+.navbar {
+  padding: 0px;
+  margin: 0px;
+  background-color: #303404;
+  height: 80px;
+}
+
+.navbar-l {
+  list-style: none;
+}
+
+.navbar-i {
+  margin: 10px;
+  display: inline-block;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  font-size: 20px;
+}
+
+header {
+  position: relative;
+  display: flex;
+  height: 100%;
+}
+
+#but {
+  float: right;
+  height: 30.4px;
+  width: 30.4px;
+  justify-content: center;
+}
+
+#but button{
+  height: 30.4px; 
+  width: 30.4px; 
+  border: solid white; 
+  border-radius: 5px; 
+  background-color: #303404;
+}
+
+.navbar-i a{
+  text-decoration: none;
+  color: white;
+}
+
+#sidebar .table-container table tr{
+  transition: 1s;
+  border-radius: 30px;
+}
+
+#sidebar .table-container table tr:hover {
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}

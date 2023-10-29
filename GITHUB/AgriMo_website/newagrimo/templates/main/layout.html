@@ -1,0 +1,74 @@
+
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="lay-d.css">
+	{% block style%}{% endblock %}
+</head>
+<body>
+	<div class="navbar">
+		<ul class="navbar-l">
+			<li class="navbar-i">AGRIMO
+			</li>
+			<li class="navbar-i" id = "but"><button onclick ="show()"></button>
+			</li>
+			<li class="navbar-i" style="float: right;"><a href="#">Помощь</a>
+			</li>
+			<li class="navbar-i" style="float: right;"><a href="#">Профиль</a>
+			</li>
+		</ul>
+	</div>
+	<div id="sidebar">
+  	<div class="table-container">
+    	<table>
+      <tr>
+        <td><i class="fa fa-home icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="#">Главная</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-user icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="#">Личный кабинет</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-area-chart icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="#">Мониторинг урожая</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-map-marker icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="#">Геолокация</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-briefcase icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="#">Список вакансий</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-calendar icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="#">Мероприятия</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-shopping-cart icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="#">Магазин</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-book icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="#">Образовка</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-cog icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="#">Настройки</a></td>
+      </tr>
+    	</table>
+  	</div>
+	</div>
+	{% block content %}
+	{% endblock %}
+  <script>
+    function show() {
+      document.getElementById('sidebar').classList.toggle('active');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,260 @@
+body{
+  margin: 0;
+}
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #303404;
+  border-right: none;
+  padding: 5px;
+  height: 40px;
+  border-radius: 15px 0 0 15px;
+  outline: none;
+  color: black;
+}
+
+.searchTerm:focus{
+  color: #303404;
+}
+
+.searchButton {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #303404;
+  background: #303404;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 15px 15px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 90%;
+  padding: 20px;
+  float: left;
+}
+
+.navbar {
+  padding: 0px;
+  margin: 0px;
+  background-color: #303404;
+  height: 80px;
+  z-index: 1;
+  overflow: hidden;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+}
+
+.navbar-l {
+  list-style: none;
+}
+
+.navbar-i {
+  margin: 10px;
+  display: inline-block;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  font-size: 20px;
+}
+
+.shopcart{
+  border: solid #303404;
+  background-color: #303404;
+  float: left;
+  margin: 20px;
+  color: white;
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+}
+
+.product{
+  margin: 20px;
+  position: relative;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  height: 60%;
+  width: 30%;
+  background-color: lightgray;
+  float: left;
+  transition: .4s;
+}
+
+h1{
+  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 50px;
+  margin-bottom: 0px;
+}
+
+.minifoot{
+  position: absolute;
+  bottom: 0;
+  border-radius: 0px 0px 20px 20px;
+  background-color: white;
+  height: 100px;
+  width: 100%;
+}
+
+.foottit{
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  padding-left: 20px;
+  margin-bottom: 2px;
+}
+
+.price{
+  font-family: 'Poppins', sans-serif;
+  margin-top: 0px;
+  padding-left: 20px;
+  font-size: 17px;
+  color: gray;
+}
+
+
+
+.descc{
+  float: left;
+}
+
+body{
+  overflow-x: hidden;
+}
+
+i{
+  padding-right: 10px;
+}
+#sidebar.active {
+  right: 0;
+  overflow: auto;
+}
+#content {
+  z-index: 1;
+  transition: .4s;
+}
+
+#sidebar.active {
+  right: 0;
+  overflow: auto;
+}
+
+.wrap{
+  padding-top: 0px;
+}
+
+.shopcart{
+  margin-top: 0px;
+}
+
+.navbar-i a{
+  text-decoration: none;
+  color: white;
+}
+
+#sidebar .table-container table tr{
+  transition: 1s;
+  border-radius: 30px;
+}
+
+#sidebar .table-container table tr:hover {
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+
+#sidebar.active {
+  right: 0;
+  overflow: auto;
+}
+
+#sidebar {
+  position: fixed;
+  width: 300px;
+  height: 90%;
+  background: #fffcf4;
+  right: -310px;
+  transition: .4s;
+  overflow: hidden;
+  z-index: 4;
+  top: 80px;
+}
+
+.table-container {
+  width: 100%;
+}
+
+.table-container table {
+  border-collapse: collapse;
+  width: 100%;
+  height: 100%;
+}
+
+.table-container td {
+  padding: 10px;
+  text-align: center;
+}
+
+.table-container .icon {
+  font-size: 120%;
+  margin-left: 40px;
+}
+
+.table-container .text {
+  font-family: 'Inter', sans-serif;
+  text-align: left;
+  font-size: 120%;
+}
+.table-container .text a {
+  text-decoration: none;
+  color: black;
+}
+
+.button-buys:hover{
+  background-color: #947b31;
+}
+
+.button-buy{
+  position: absolute;
+  right: 20px;
+}
+
+.button-buys{
+  border: none;
+  border-radius: 5px;
+  background-color: #FED65C;
+  margin-top: 15px;
+  margin-left: 40px;
+  height: 40px;
+  font-family: 'Inter', sans-serif;
+  transition: .5s;
+}
+
+
+#content.shrink{
+  margin-right: 300px;
+  margin-bottom: 300px;
+}
+
+#content.shrink > .product{
+  height: 420px;
+}
+
+#content{
+  margin-top: 100px;
+}
+
+img{
+  border-radius: 20px;
+}

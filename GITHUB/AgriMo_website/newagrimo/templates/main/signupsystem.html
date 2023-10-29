@@ -1,0 +1,88 @@
+{% load static %}
+
+<html>
+<head>
+	<link rel="stylesheet" href="{% static 'css/reg-d.css' %}">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body style="background-image: url('{% static 'images/bg.png' %}'); background-size: cover; position: relative;">
+	<header>
+		AGRIMO
+	</header>
+	<div class="main">
+		<div class="content">
+			<h1 class="reg-t">Регистрация</h1>
+			<form action="{% url 'signupsystem' %}" method="POST">
+				{% csrf_token %}
+				<div class="form" id="name">
+ 					<input type="text" name="name" autocomplete="off" required />
+  					<label for="text" class="label-name">
+    				<span class="content-name">
+      					Имя
+    				</span>
+  					</label>
+				</div>
+				<div class="form" id="s-name">
+ 					<input type="text" name="lastname" autocomplete="off" required />
+  					<label for="text" class="label-name">
+    				<span class="content-name">
+      					Фамилия
+    				</span>
+  					</label>
+				</div>
+				<div class="form" id="tel">
+ 					<input type="text" name="phone" autocomplete="off" required />
+  					<label for="text" class="label-name">
+    				<span class="content-name">
+      					Номер телефона
+    				</span>
+  					</label>
+				</div>
+				<div class="form" id="job">
+ 					<input list="jobs" name="profession" placeholder="Тип деятельности">
+  					<datalist id="jobs">
+    					<option value="Владелец Фермы">
+    					<option value="Агроном - учетник">
+  					</datalist>
+				</div>
+				<div class="form" id="email">
+ 					<input type="text" name="username" autocomplete="off" required />
+  					<label for="text" class="label-name">
+    				<span class="content-name">
+      					Электронная почта
+    				</span>
+  					</label>
+				</div>
+				<br>
+				<div class="form" id="password">
+ 					<input id="hid" type="password" name="password1" autocomplete="off" required />
+  					<label for="text" class="label-name">
+    				<span class="content-name">
+      					Пароль
+    				</span>
+  					</label>
+  					<button class="show" type="button" onclick="myFunction()"><i class="fa fa-eye" aria-hidden="true"></i></button>
+				</div>
+				<div class="form" id="password">
+ 					<input id="hid" type="password" name="password2" autocomplete="off" required />
+  					<label for="text" class="label-name">
+    				<span class="content-name">
+      					Повторите пароль
+    				</span>
+  					</label>
+  					<button class="show" type="submit" onclick="myFunction()"><i class="fa fa-eye" aria-hidden="true"></i></button>
+				</div>
+				<p>Есть Аккаунт? <a href="{% url 'loginsystem' %}">Войдите</a></p>
+				<button class="button" type="submit">
+  					<p class="button-text">Продолжить</p>
+  					<img class="button-icon" src="https://cdn-icons-png.flaticon.com/512/109/109617.png">
+				</button>
+			</form>	
+			
+		</div>
+	</div>
+</body>
+</html>

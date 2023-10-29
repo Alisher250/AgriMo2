@@ -1,0 +1,139 @@
+{% load static %}
+
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'css/job-d.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div class="navbar">
+		<ul class="navbar-l">
+			<li class="navbar-i">AGRIMO
+			</li>
+			<li class="navbar-i" style="float: right; height: 30.4px; width: 30.4px; justify-content: center;"><button style="height: 30.4px; width: 30.4px; border: solid white; border-radius: 5px; background-color: #303404;" onclick ="show()"></button>
+			</li>
+			<li class="navbar-i" style="float: right;">Помощь
+			</li>
+			<li class="navbar-i" style="float: right;">Профиль
+			</li>
+		</ul>
+	</div>
+
+	<div id="content">
+		<div class="filters">
+			<h1>Фильтры</h1>
+			<p><b>Опыт работы</b></p>
+			<form action="{% url 'specialists' %}" method="GET">
+			  <input type="checkbox" id="no" name="experience" value="no">
+			  <label for="no">Не имеет значения</label><br>
+			  <input type="checkbox" id="one" name="experience" value="1-3">
+			  <label for="one">от 1-3 лет</label><br>
+			  <input type="checkbox" id="three" name="experience" value="3-6">
+			  <label for="three">от 3-6 лет</label><br>
+			  <input type="checkbox" id="six" name="experience" value="6-9">
+			  <label for="six">от 6-9 лет</label><br>
+			  <input type="checkbox" id="ten" name="experience" value="10+">
+			  <label for="ten">от 10 лет</label><br>
+
+			  <p><b>Город</b></p>
+			  <input type="checkbox" id="all" name="city" value="all">
+			  <label for="all">Все</label><br>
+			  <input type="checkbox" id="ast" name="city" value="Астана">
+			  <label for="ast">Астана</label><br>
+			  <input type="checkbox" id="alm" name="city" value="Алматы">
+			  <label for="alm">Алматы</label><br>
+			  <input type="checkbox" id="act" name="city" value="Актобе">
+			  <label for="act">Актобе</label><br>
+			  <input type="checkbox" id="kar" name="city" value="Караганда">
+			  <label for="kar">Караганда</label><br>
+
+			  <p><b>Специализация</b></p>
+			  <input type="checkbox" id="all" name="specialization" value="Овощевод">
+			  <label for="all">Овощевод</label><br>
+			  <input type="checkbox" id="ast" name="specialization" value="Семеновод">
+			  <label for="ast">Семеновод</label><br>
+			  <input type="checkbox" id="alm" name="specialization" value="Агрохимик">
+			  <label for="alm">Агрохимик</label><br>
+			  <input type="checkbox" id="act" name="specialization" value="Защита растений">
+			  <label for="act">Защита растений</label><br>
+			  <input type="checkbox" id="kar" name="specialization" value="Агроном-датчик">
+			  <label for="kar">Агроном-датчик</label><br>
+				<input type="submit" value="Поиск">
+		</div>
+		<div class="lenta">
+			<h1>Список вакансий</h1>
+
+			{% for s in specialists %}
+			<div class="job-lent">
+				<img src="{{ s.photo.url }}" height="150px" width="150px">
+				<ul class="stats">
+					<li>{{s.fullname}}</li>
+					<li>{{s.profession}}</li>
+					<li>Возраст: {{s.age}}</li>
+					<li>Стаж: {{s.experience}}</li>
+					<li>Город: {{s.city}}</li>
+				</ul>
+				<div class="rating">
+					{% for i in "xxxxx" %}
+						<i class="fa fa-star fa-2x" aria-hidden="true" {% if forloop.counter <= s.rating %}style="color: yellow;"{% endif %}></i>
+					{% endfor %}
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	<div id="sidebar">
+  <div class="table-container">
+    <table>
+      <tr>
+        <td><i class="fa fa-home icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="{% url 'index' %}">Главная</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-user icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="#">Личный кабинет</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-area-chart icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="{% url 'graphs' param='week' %}">Мониторинг урожая</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-area-chart icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="{% url 'graphspredict' param='week' %}">Прогнозы ИИ</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-map-marker icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="{% url 'geolocation' %}">Геолокация</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-briefcase icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="{% url 'specialists' %}">Список вакансий</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-calendar icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="#">Мероприятия</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-shopping-cart icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="{% url 'shop' %}">Магазин</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-book icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="{% url 'education' %}">Образовка</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-cog icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="#">Настройки</a></td>
+      </tr>
+    	</table>
+  </div>
+</div>
+    <script>
+      function show() {
+        document.getElementById('sidebar').classList.toggle('active');
+        document.getElementById('content').classList.toggle('active');
+      }
+    </script>
+</body>
+</html>

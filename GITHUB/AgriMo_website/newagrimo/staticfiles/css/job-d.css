@@ -1,0 +1,147 @@
+#sidebar.active {
+  right: 0;
+  overflow: auto;
+}
+#content {
+  z-index: 1;
+  transition: .4s;
+}
+body{
+  padding: 0;
+  margin: 0;
+}
+
+#sidebar.active {
+  right: 0;
+  overflow: auto;
+}
+
+#sidebar {
+  position: fixed;
+  width: 300px;
+  height: 90%;
+  background: #fffcf4;
+  right: -310px;
+  transition: .4s;
+  overflow: hidden;
+  z-index: 4;
+  top: 80px;
+}
+
+.table-container {
+  width: 100%;
+}
+
+.table-container table {
+  border-collapse: collapse;
+  width: 100%;
+  height: 100%;
+}
+
+.table-container td {
+  padding: 10px;
+  text-align: center;
+}
+
+.table-container .icon {
+  font-size: 120%;
+  margin-left: 40px;
+}
+
+.table-container .text {
+  font-family: 'Inter', sans-serif;
+  text-align: left;
+  font-size: 120%;
+}
+.table-container .text a {
+  text-decoration: none;
+  color: black;
+}
+
+.navbar {
+  z-index: 1;
+  overflow-y: hidden;
+
+}
+
+.navbar {
+  padding: 0px;
+  margin: 0px;
+  background-color: #303404;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+.navbar-l {
+  list-style: none;
+}
+
+.navbar-i {
+  margin: 10px;
+  display: inline-block;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  font-size: 20px;
+}
+
+.filters{
+  background: #fffcf4;
+  width: 270px;
+  height: 100%;
+  padding-left: 50px;
+  font-family: 'Poppins', sans-serif;
+  float: left;
+  position: fixed;
+}
+
+.lenta{
+  margin-left: 350px;
+  float: left;
+  font-family: 'Poppins', sans-serif;
+  height: 100%;
+  width: 70%;
+}
+
+#sidebar .table-container table tr{
+  transition: .5s;
+  border-radius: 30px;
+}
+
+#sidebar .table-container table tr:hover {
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.job-lent{
+  width: 100%;
+  height: 20%;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  position: relative;
+  margin-bottom: 50px;
+}
+
+img{
+  float: left;
+}
+.stats{
+  list-style: none;
+  float: left;
+  padding-left: 0;
+}
+
+.rating{
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  color: lightgray;
+}
+
+
+#content.active{
+  margin-right: 300px;
+}

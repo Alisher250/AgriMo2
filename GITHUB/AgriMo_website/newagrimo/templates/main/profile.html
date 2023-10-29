@@ -1,0 +1,9 @@
+<form method="POST" action="{% url 'startif' %}">
+    {% csrf_token %}
+    <button type="submit"><p>Запустить метеостанцию</p></button>
+  </form>
+  <br>
+  <form method="POST" action="{% url 'endif' %}">
+    {% csrf_token %}
+    <button type="submit"><p>Остановить метеостанцию</p></button>
+  </form>

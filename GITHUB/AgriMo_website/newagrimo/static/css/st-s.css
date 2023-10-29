@@ -1,0 +1,300 @@
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+#sidebar.active {
+  right: 0;
+  overflow: auto;
+}
+
+#sidebar {
+  position: fixed;
+  width: 300px;
+  height: 90%;
+  background: #fffcf4;
+  right: -310px;
+  transition: .4s;
+  overflow: hidden;
+  z-index: 4;
+  top: 80px;
+}
+
+.table-container {
+  width: 100%;
+}
+
+.table-container table {
+  border-collapse: collapse;
+  width: 100%;
+  height: 100%;
+}
+
+.table-container td {
+  padding: 10px;
+  text-align: center;
+}
+
+.table-container .icon {
+  font-size: 120%;
+  margin-left: 40px;
+}
+
+.table-container .text {
+  font-family: 'Inter', sans-serif;
+  text-align: left;
+  font-size: 120%;
+}
+.table-container .text a {
+  text-decoration: none;
+  color: black;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: #303404;
+  height: 80px;
+  overflow: hidden;
+  z-index: 4;
+}
+
+
+.navbar-l {
+  list-style: none;
+}
+
+.navbar-i {
+  margin: 10px;
+  display: inline-block;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  font-size: 20px;
+}
+
+header {
+  position: relative;
+  display: flex;
+  height: 100%;
+}
+
+#but {
+  float: right;
+  height: 30.4px;
+  width: 30.4px;
+  justify-content: center;
+}
+
+#but button{
+  height: 30.4px; 
+  width: 30.4px; 
+  border: solid white; 
+  border-radius: 5px; 
+  background-color: #303404;
+}
+
+.navbar-i a{
+  text-decoration: none;
+  color: white;
+}
+
+#sidebar .table-container table tr{
+  transition: 1s;
+  border-radius: 30px;
+}
+
+#sidebar .table-container table tr:hover {
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.small-stat{
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  margin: 5%;
+  height: 600px;
+  width: 40%;
+  float: left;
+}
+
+#main{
+  height: 100%;
+  margin-top: 150px;
+  z-index: 1;
+}
+
+.desc-stat p, h5{
+  margin: 0px;
+
+}
+
+.desc-stat{
+  position: relative;
+}
+
+.desc-stat p{
+  margin-top: 40px;
+  color: gray;
+  font-family: 'Inter', sans-serif;
+}
+.desc-stat h5{
+  font-size: 20px;
+  font-family: 'Inter', sans-serif;
+}
+
+.desc-stat hr{
+  margin-top: 50px;
+  width: 84%;
+}
+
+#time{
+  float: left;
+}
+
+.title-stat{
+  float: left;
+  margin-left: 8%;
+  padding-bottom: 10px;
+}
+
+.desc-stat select{
+  position: absolute;
+  top: 40px;
+  right: 8%;
+  height: 30px;
+  width: 100px;
+  border-radius: 20px;
+  border: 0px;
+  background-color: #F8F8FF;
+}
+
+#title-f{
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 60px;
+}
+
+.long-stat{
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  margin: 5%;
+  height: 600px;
+  width: 90%;
+  float: left;
+}
+
+
+
+.desc-stat-l{
+  position: relative;
+}
+
+.desc-stat-l p{
+  margin-top: 40px;
+  color: gray;
+  font-family: 'Inter', sans-serif;
+}
+.desc-stat-l h5{
+  font-size: 20px;
+  font-family: 'Inter', sans-serif;
+}
+
+.desc-stat-l hr{
+  margin-top: 50px;
+  width: 90%;
+}
+
+.desc-stat-l select{
+  position: absolute;
+  top: 40px;
+  right: 5%;
+  height: 30px;
+  width: 100px;
+  border-radius: 20px;
+  border: 0px;
+  background-color: #F8F8FF;
+}
+
+.title-stat-l {
+  float: left;
+  margin-left: 5%;
+  padding-bottom: 10px;
+}
+
+#prognoz{
+  background-color: #191919;
+  width: 100%;
+  height: 1000px;
+  float: left;
+  border-radius: 40px 40px 0px 0px;
+  position: relative;
+}
+
+#footer{
+  position: absolute;
+  bottom: 20px;
+  width: 95%;
+  color: white;
+  margin-left: 2.5%;
+}
+#main{
+  transition: .4s;
+}
+
+
+#main.shrink{
+  margin-right: 300px;
+}
+
+#switcher ul li{
+  display: inline-block;
+  height: 100%;
+  padding-left: 7.5px;
+  padding-right: 7.5px;
+}
+
+#switcher{
+  display: flex;
+  justify-content: center;
+  background-color: rgba(235, 222, 201, 0.5);
+  margin-left: 30%;
+  margin-right: 30%;
+  height: 50px;
+  border-radius: 20px;
+}
+
+#switcher ul {
+  font-family: 'Inter', sans-serif;
+  padding-left: 0px;
+  height: 100%;
+  margin: 0px;
+}
+
+#switcher ul li button{
+  background-color: rgba(235, 222, 201, 0.1);
+  font-family: 'Inter', sans-serif;
+  border: none;
+  color: #9291A5;
+  transition: .5s;
+  height: 100%;
+  width: 100px;
+}
+
+#switcher ul li button:hover{
+  background-color: #637A36;
+  font-family: 'Inter', sans-serif;
+  color: white;
+  height: 100%;
+  margin: 0px;
+  border-radius: 17px;
+}
